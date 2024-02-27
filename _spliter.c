@@ -4,7 +4,7 @@
  * @str: the str wich splited
  * Return: return the array if succed
  */
-/*char **_spliter(char *str)
+char **_spliter(char *str)
 {
 	char *token = NULL, **tokens = NULL;
 	int i = 0;
@@ -20,8 +20,8 @@
 	while (token)
 	{
 		tokens = realloc(tokens, (i + 1) * sizeof(char *));
-		if (!tokens)/check realloc*/
-		/*{
+		if (!tokens)/*check realloc*/
+		{
 			_printf("ERROR realloc()");
 			free(token), token = NULL;
 			free(str), str = NULL;
@@ -35,7 +35,7 @@
 	free(token), token = NULL;
 	free(str), str = NULL;
 	return (tokens);
-}*/
+}
 /**
  * _getline - function that take line from commande line
  *
@@ -57,47 +57,4 @@ char *_getline(void)
 		return (NULL);
 	}
 	return (line);
-}
-/**
- * _spliter - function that splits the str to an array
- * @str: the str wich splited
- * Return: return the array if succed
- */
-char **_spliter(char *str)
-{
-	char *line = NULL, *temp = NULL;
-	char **array = NULL;
-	int i;
-
-	if (!str)
-		return (NULL);
-	temp = strdup(str);
-
-	line = strtok(temp, " \n\t");
-	if (line == NULL)
-	{
-		free(str), str = NULL;
-		free(temp), temp = NULL;
-		return (NULL);
-	}
-	for (i = 1; line != NULL; i++)
-		line = strtok(NULL, " \n\t");
-	free(temp), temp = NULL;
-	array = malloc(sizeof(char *) * (i + 1));
-	if (!array)
-	{
-		free(str), str = NULL;
-		_printf("ERROR malloc()");
-		return (NULL);
-	}
-	line = strtok(str, " \n\t");
-	for (i = 0; line != NULL; i++)
-	{
-		array[i] = strdup(line);
-		line = strtok(NULL, " \n\t");
-	}
-	array[i] = NULL;
-	free(str), str = NULL;
-	free(line), line = NULL;
-	return (array);
 }

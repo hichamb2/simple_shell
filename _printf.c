@@ -47,7 +47,8 @@ int _printf(const char *format, ...)
  */
 int (*get_op_func(char s))(va_list)
 {
-	op_t ops[] = {{'s', p_list_str}, {'c', p_list_char}, {'i', p_list_num}, {'d', p_list_num}};
+	op_t ops[] = {{'s', p_list_str}, {'c', p_list_char},
+		{'i', p_list_num}, {'d', p_list_num}};
 	int i = 0;
 
 	while (i <= 4)
