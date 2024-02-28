@@ -12,38 +12,21 @@ int main(int argc, char *argv[])
 {
 	char *line = NULL;
 	char **tokens = NULL;
-	int stat = 0;
-	pid_t pid;
 	(void)argc;
-	(void)argv;
 
-while (1)
-{
-	line = _getline();
-	if (line == NULL)
+	while (1)
 	{
-		if (isatty(0) == 1)
-			_printf("\n");
-		exit(EXIT_FAILURE);
-	}
-	tokens = _spliter(line);
-	if (tokens == NULL)
-		continue;
-	pid = fork();
-	if (pid == 0)
-	{
-		if (execve(tokens[0], tokens, environ) == -1)
+		line = _getline();
+		if (line == NULL)
 		{
-			perror(argv[0]);
-			/*free_array(tokens);*/
-			exit(EXIT_FAILURE);
+			if (isatty(0) == 1)
+				_printf("\n");
+			return (0);
 		}
-		free_array(tokens);
+		tokens = _spliter(line);
+		if (tokens == NULL)
+			continue;
+		_execve(tokens, argv);
 	}
-	else
-	{
-		wait(&stat);
-	}
-}
 	return (0);
 }

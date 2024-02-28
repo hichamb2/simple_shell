@@ -14,7 +14,7 @@ char **_spliter(char *str)
 	token = strtok(str, " \t\n");
 	if (token == NULL)
 	{
-		free(str);
+		free(str), str = NULL;
 		return (NULL);
 	}
 	while (token)
