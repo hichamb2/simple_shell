@@ -34,13 +34,13 @@ int _execve(char *cmd[], char **argv)
 		{
 			perror(argv[0]);
 			exit(EXIT_FAILURE);
-			/*free_array(cmd);*/
+			free_array(cmd);
 		}
 	}
 	else
 	{
 		waitpid(pid, &stat, 0);
-		/*free_array(cmd);*/
+		free_array(cmd);
 	}
 	return (WEXITSTATUS(stat));
 }
