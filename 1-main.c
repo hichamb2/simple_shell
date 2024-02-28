@@ -23,7 +23,7 @@ while (1)
 	if (line == NULL)
 	{
 		if (isatty(0) == 1)
-			_printf(" : kina EOF\n");
+			_printf("\n");
 		exit(EXIT_FAILURE);
 	}
 	tokens = _spliter(line);
@@ -34,7 +34,7 @@ while (1)
 	{
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
-			_printf("kina EXEC...: \n");
+			_printf("%s : No such file or directory \n", argv[0]);
 			/*free_array(tokens);*/
 			exit(EXIT_FAILURE);
 		}
