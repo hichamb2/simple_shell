@@ -11,7 +11,7 @@
 int main(int argc, char *argv[])
 {
 	char *line = NULL;
-	char **tokens = NULL;
+	char **command = NULL;
 	(void)argc;
 
 	while (1)
@@ -23,10 +23,10 @@ int main(int argc, char *argv[])
 				_printf("\n");
 			return (0);
 		}
-		tokens = _spliter(line);
-		if (tokens == NULL)
+		command = _spliter(line);
+		if (command == NULL)
 			continue;
-		_execve(tokens, argv);
+		_execve(command, argv);
 	}
 	return (0);
 }
