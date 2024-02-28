@@ -33,6 +33,7 @@ int _execve(char *cmd[], char **argv)
 		if (execve(cmd[0], cmd, environ) == -1)
 		{
 			perror(argv[0]);
+			exit(EXIT_FAILURE);
 			/*free_array(cmd);*/
 		}
 	}
