@@ -25,6 +25,8 @@ char **_spliter(char *str)
 			_printf("ERROR realloc()");
 			free(token), token = NULL;
 			free(str), str = NULL;
+			if (i > 0)
+				free_array(tokens);
 			exit(EXIT_FAILURE);
 		}
 		tokens[i] = _strdup(token);

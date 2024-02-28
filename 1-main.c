@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 		if (line == NULL)
 		{
 			if (isatty(0) == 1)
-				_printf("\n");
+				perror(argv[0]);
 			return (0);
 		}
 		command = _spliter(line);
