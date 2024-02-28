@@ -32,9 +32,9 @@ while (1)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(tokens[0], tokens, NULL) == -1)
+		if (execve(tokens[0], tokens, environ) == -1)
 		{
-			_printf("%s : No such file or directory \n", argv[0]);
+			perror(argv[0]);
 			/*free_array(tokens);*/
 			exit(EXIT_FAILURE);
 		}

@@ -6,6 +6,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <stdio.h>
+extern char **environ;
 
 int _printf(const char *format, ...);
 
