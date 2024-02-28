@@ -20,7 +20,7 @@ char **_spliter(char *str)
 	while (token)
 	{
 		tokens = realloc(tokens, (i + 1) * sizeof(char *));
-		if (!tokens)/*check realloc*/
+		if (tokens == NULL)/*check realloc*/
 		{
 			_printf("ERROR realloc()");
 			free(token), token = NULL;

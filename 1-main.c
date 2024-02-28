@@ -35,7 +35,7 @@ while (1)
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
 			_printf("kina EXEC...: \n");
-			free_array(tokens);
+			/*free_array(tokens);*/
 			exit(EXIT_FAILURE);
 		}
 		free_array(tokens);
