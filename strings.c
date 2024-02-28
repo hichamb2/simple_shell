@@ -42,3 +42,23 @@ int _strcmp(char *s1, char *s2)
 	}
 		return (comp);
 }
+/**
+ * _strdup - function that returns a copy of the string given as a parameter.
+ * @str: the string wich will be duplicated
+ * Return: a pointer to a newly allocated space in memory
+ */
+char *_strdup(char *str)
+{
+	int len, i;
+	char *ptr;
+
+	if (str == NULL)
+		return (NULL);
+	len = _strlen(str);
+	ptr = (char *)malloc((sizeof(char) * len) + 1);
+	if (ptr == NULL)
+		return (NULL);
+	for (i = 0; str[i] != '\0'; i++)
+		ptr[i] = str[i];
+	return (ptr);
+}

@@ -35,4 +35,5 @@ char **_spliter(char *str);
 char *_getline(void);
 void free_array(char **array);
 int _execve(char *cmd[], char **argv);
+char *_strdup(char *str);
 #endif

@@ -27,7 +27,7 @@ char **_spliter(char *str)
 			free(str), str = NULL;
 			exit(EXIT_FAILURE);
 		}
-		tokens[i] = strdup(token);
+		tokens[i] = _strdup(token);
 		token = strtok(NULL, " \t\n");
 		i++;
 	}
@@ -49,7 +49,7 @@ char *_getline(void)
 	int ret = 0;
 
 	if (isatty(0) == 1)/*if we are in terminal (1)*/
-		write(1, "hicham($) ", 11);
+		_printf("#cisfun$");
 	ret = getline(&line, &size_line, stdin);
 	if (ret == EOF)
 	{
