@@ -27,7 +27,7 @@ char **_spliter(char *str)
 			free(str), str = NULL;
 			exit(EXIT_FAILURE);
 		}
-		tokens[i] = token;
+		tokens[i] = strdup(token);
 		token = strtok(NULL, " \t\n");
 		i++;
 	}
