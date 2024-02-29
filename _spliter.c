@@ -12,6 +12,8 @@ char **_spliter(char *str)
 	if (str == NULL)
 		return (NULL);
 	token = strtok(str, " \t\n");
+	if (strcmp("exit", str) == 0)
+		exit(EXIT_FAILURE);
 	if (token == NULL)
 	{
 		free(str), str = NULL;
@@ -53,7 +55,7 @@ char *_getline(void)
 	if (isatty(0) == 1)/*if we are in terminal (1)*/
 		_printf("#cisfun$");
 	ret = getline(&line, &size_line, stdin);
-	if (ret == EOF)
+	if (ret == -1)
 	{
 		free(line), line = NULL;
 		return (NULL);
