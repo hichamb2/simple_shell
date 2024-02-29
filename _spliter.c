@@ -12,8 +12,6 @@ char **_spliter(char *str)
 	if (str == NULL)
 		return (NULL);
 	token = strtok(str, " \t\n");
-	if (strcmp("exit", str) == 0)
-		exit(EXIT_FAILURE);
 	if (token == NULL)
 	{
 		free(str), str = NULL;
@@ -32,6 +30,8 @@ char **_spliter(char *str)
 			exit(EXIT_FAILURE);
 		}
 		tokens[i] = _strdup(token);
+		if (strcmp("exit", tokens[i]) == 0)
+			exit(EXIT_FAILURE);
 		token = strtok(NULL, " \t\n");
 		i++;
 	}
