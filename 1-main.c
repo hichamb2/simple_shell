@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 			return (0);
 		}
 		command = _spliter(line);
+
 		if (command == NULL)
 			continue;
 		_execve(command, argv);
