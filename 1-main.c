@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		if (_strcmp(line, "env") == 0)
 		{
 			print_array(environ, temp);
-			return(stat);
+			return (stat);
 		}
 		command = _spliter(line);
 		if (!command)

@@ -2,6 +2,7 @@
 /**
  * print_array - the function that print array
  * @array: the array
+ * @temp: tempo array
  */
 void print_array(char *array[], char *temp[])
 {
