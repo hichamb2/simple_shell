@@ -34,7 +34,7 @@ char **_spliter(char *str)
 		{
 			free(token), token = NULL;
 			free_array(tokens);
-			exit(0);
+			exit(2);
 		}
 		token = strtok(NULL, " \t\n");
 		i++;
