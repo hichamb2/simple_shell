@@ -11,8 +11,7 @@
 int main(int argc, char *argv[])
 {
 	char *line = NULL;
-	char **command = NULL, **temp = NULL;
-	int index = 0, stat = 0;
+	char **command = NULL;
 	(void)argc;
 
 	while (1)
@@ -22,18 +21,13 @@ int main(int argc, char *argv[])
 		{
 			if (isatty(0) == 1)
 				perror(argv[0]);
-			return (stat);
-		}
-		index++;
-		if (_strcmp(line, "env") == 0)
-		{
-			print_array(environ, temp);
-			return (stat);
+			return (0);
 		}
 		command = _spliter(line);
-		if (!command)
+
+		if (command == NULL)
 			continue;
-		stat = _execve(command, argv, index);
+		_execve(command, argv);
 	}
-	return (stat);
+	return (0);
 }
