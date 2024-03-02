@@ -30,7 +30,7 @@ char **_spliter(char *str)
 			exit(EXIT_FAILURE);
 		}
 		tokens[i] = _strdup(token);
-		if (strcmp("exit", tokens[i]) == 0)
+		if (_strcmp("exit", tokens[i]) == 0)
 			exit(EXIT_FAILURE);
 		token = strtok(NULL, " \t\n");
 		i++;
