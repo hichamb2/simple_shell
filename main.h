@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 #include <string.h>
 #include <stdio.h>
 extern char **environ;
@@ -13,6 +14,9 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+void print_array(char *array[], char *temp[]);
 
 /**
  * struct op - Struct op
@@ -34,6 +38,8 @@ int p_list_num(va_list ptr);
 char **_spliter(char *str);
 char *_getline(void);
 void free_array(char **array);
-int _execve(char *cmd[], char **argv);
+int _execve(char *cmd[], char **argv, int index);
 char *_strdup(char *str);
+char *get_env(char *str);
+char *get_path(char *command);
 #endif

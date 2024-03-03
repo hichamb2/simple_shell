@@ -20,20 +20,28 @@ void free_array(char **array)
  * _execve - function that makes the same of execve
  * @cmd: array that has the commandes
  * @argv: the array of argv in main
+ * @index: index of execution command
  * Return: status value of child pid
  */
-int _execve(char *cmd[], char **argv)
+int _execve(char *cmd[], char **argv, int index)
 {
 	int stat;
+	char *full_command;
 	pid_t pid;
 
+	full_command = get_path(cmd[0]);
+	if (!full_command)
+	{
+		_printf("%s: %d: %s: not found\n", argv[0], index, cmd[0]);
+		free_array(cmd);
+		return (127);
+	}
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(cmd[0], cmd, environ) == -1)
+		if (execve(full_command, cmd, environ) == -1)
 		{
-			perror(argv[0]);
-			exit(EXIT_FAILURE);
+			free(full_command), full_command = NULL;
 			free_array(cmd);
 		}
 	}
@@ -41,6 +49,7 @@ int _execve(char *cmd[], char **argv)
 	{
 		waitpid(pid, &stat, 0);
 		free_array(cmd);
+		free(full_command), full_command = NULL;
 	}
 	return (WEXITSTATUS(stat));
 }

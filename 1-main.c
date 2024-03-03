@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
 	char *line = NULL;
 	char **command = NULL;
+	int index = 0, stat = 0;
 	(void)argc;
 
 	while (1)
@@ -21,13 +22,13 @@ int main(int argc, char *argv[])
 		{
 			if (isatty(0) == 1)
 				perror(argv[0]);
-			return (0);
+			return (stat);
 		}
+		index++;
 		command = _spliter(line);
-
-		if (command == NULL)
+		if (!command)
 			continue;
-		_execve(command, argv);
+		stat = _execve(command, argv, index);
 	}
-	return (0);
+	return (stat);
 }

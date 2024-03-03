@@ -31,11 +31,7 @@ char **_spliter(char *str)
 		}
 		tokens[i] = _strdup(token);
 		if (_strcmp("exit", tokens[i]) == 0)
-		{
-			free(token), token = NULL;
-			free_array(tokens);
-			exit(2);
-		}
+			exit(EXIT_FAILURE);
 		token = strtok(NULL, " \t\n");
 		i++;
 	}
