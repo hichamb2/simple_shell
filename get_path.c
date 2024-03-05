@@ -26,7 +26,7 @@ char *get_path(char *command)/*str hwa "PATH" mn b3d itbdl fi tsks*/
 	path = strtok(env, ":");
 	while (path)
 	{
-		full_command = malloc(_strlen(path) + _strlen(command) + 0);
+		full_command = malloc(_strlen(path) + _strlen(command) + 2);
 		if (full_command == NULL)
 			return (NULL);
 		_strcpy(full_command, path);
@@ -48,12 +48,12 @@ char *get_path(char *command)/*str hwa "PATH" mn b3d itbdl fi tsks*/
  * @str: the path given
  * Return: the path
  */
-char *get_env(char *str)
+/*char *get_env(char *str)
 {
 	char *key = NULL, *val = NULL, *temp = NULL, *env = NULL;
 	int i;
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (i = 0; environ[i + 1] != NULL; i++)
 	{
 		temp = _strdup(environ[i]);
 		key = strtok(temp, "=");
@@ -62,9 +62,35 @@ char *get_env(char *str)
 			val = strtok(NULL, "\n");
 			env = _strdup(val);
 			free(temp), temp = NULL;
+			printf("%s\n", env);
 			return (env);
 		}
 		free(temp), temp = NULL;
+	}
+	return (NULL);
+}*/
+char *get_env(char *str)
+{
+	char *key = NULL, *val = NULL, *temp = NULL, *env = NULL;
+	int i;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		temp = _strdup(environ[i]);
+		if (!temp)
+			return NULL; /* Memory allocation failure*/
+		key = strtok(temp, "=");
+		if (key && _strcmp(key, str) == 0)
+		{
+			val = strtok(NULL, "");
+			if (val)
+			{
+				env = _strdup(val);
+				free(temp);
+				return env;
+			}
+		}
+		free(temp);
 	}
 	return (NULL);
 }

@@ -48,8 +48,8 @@ int _execve(char *cmd[], char **argv, int index)
 	else
 	{
 		waitpid(pid, &stat, 0);
-		free_array(cmd);
 		free(full_command), full_command = NULL;
+		free_array(cmd);
 	}
 	return (WEXITSTATUS(stat));
 }

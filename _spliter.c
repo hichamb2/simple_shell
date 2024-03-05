@@ -52,7 +52,7 @@ char *_getline(void)
 	size_t size_line = 0;
 	int ret = 0;
 
-	if (isatty(0) == 1)/*if we are in terminal (1)*/
+	if (isatty(0) == 1)
 		_printf("#cisfun$");
 	ret = getline(&line, &size_line, stdin);
 	if (ret == -1)
