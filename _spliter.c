@@ -23,7 +23,7 @@ char **_spliter(char *str)
 		tokens = (char **)realloc(tokens, sizeof(char *) * (i + 1));
 		if (tokens == NULL)/*check realloc*/
 		{
-			_printf("ERROR realloc()");
+			perror("ERROR realloc()");
 			exit(EXIT_FAILURE);
 		}
 		tokens[i] = (char *)malloc((strlen(token) + 1) * sizeof(char));

@@ -36,20 +36,23 @@ int _execve(char *cmd[], char **argv, int index)
 		free_array(cmd);
 		return (127);
 	}
-	pid = fork();
-	if (pid == 0)
+	else
 	{
-		if (execve(full_command, cmd, environ) == -1)
+		pid = fork();
+		if (pid == 0)
 		{
+			if (execve(full_command, cmd, environ) == -1)
+			{
+				free(full_command), full_command = NULL;
+				free_array(cmd);
+			}
+		}
+		else
+		{
+			waitpid(pid, &stat, 0);
 			free(full_command), full_command = NULL;
 			free_array(cmd);
 		}
+		return (WEXITSTATUS(stat));
 	}
-	else
-	{
-		waitpid(pid, &stat, 0);
-		free(full_command), full_command = NULL;
-		free_array(cmd);
-	}
-	return (WEXITSTATUS(stat));
 }
