@@ -68,17 +68,16 @@ char *_strdup(char *str)
  * @src: 2nd parametre
  * Return: po,ter to dest
  */
-char *_strcat(char *dest, char *src)
+char *_strcat(char *dest, const char *src)
 {
 	char *ret = dest;
+	int i;
 
-	while (*dest != '\0')
-		dest++;
-	while (*src != '\0')
+	dest += _strlen(dest);
+	for (i = 0; src[i] != '\0'; i++)
 	{
-		*dest = *src;
+		*dest = src[i];
 		dest++;
-		src++;
 	}
 	*dest = '\0';
 	return (ret);

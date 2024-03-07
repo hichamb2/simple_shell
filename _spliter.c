@@ -11,29 +11,36 @@ char **_spliter(char *str)
 
 	if (str == NULL)
 		return (NULL);
-	token = strtok(str, " \t\n");
-	if (token == NULL)
+	tokens = (char **)malloc(sizeof(char *));
+	if (tokens == NULL)
 	{
-		free(str), str = NULL;
-		return (NULL);
+		perror("Memory allocation failed");
+		exit(EXIT_FAILURE);
 	}
+	token = strtok(str, " \t\n");
 	while (token)
 	{
-		tokens = realloc(tokens, (i + 2) * sizeof(char *));
+		tokens = (char **)realloc(tokens, sizeof(char *) * (i + 1));
 		if (tokens == NULL)/*check realloc*/
 		{
 			_printf("ERROR realloc()");
-			free(token), token = NULL;
-			free(str), str = NULL;
-			if (i > 0)
-				free_array(tokens);
 			exit(EXIT_FAILURE);
 		}
-		tokens[i] = _strdup(token);
-		if (_strcmp("exit", tokens[i]) == 0)
+		tokens[i] = (char *)malloc((strlen(token) + 1) * sizeof(char));
+		if (tokens[i] == NULL)
+		{
+			perror("Memory allocation failed");
 			exit(EXIT_FAILURE);
+		}
+		strcpy(tokens[i], token);
 		token = strtok(NULL, " \t\n");
 		i++;
+	}
+	tokens = (char **)realloc(tokens, (i + 1) * sizeof(char *));
+	if (tokens == NULL)
+	{
+		perror("Memory allocation failed");
+		exit(EXIT_FAILURE);
 	}
 	tokens[i] = NULL;
 	free(token), token = NULL;
