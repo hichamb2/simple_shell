@@ -26,13 +26,14 @@ void path_perror(char *name, char *command, int index)
  */
 void exit_perror(char *name, char *command, int index)
 {
-	char message[] = ": exit: Illegal number: ";
+	/*char message[] = ": exit: Illegal number: ";*/
 	char *idx = _itostr(index);
 
 	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, idx, _strlen(idx));
-	write(STDERR_FILENO, message, _strlen(message));
+	write(STDERR_FILENO, ": exit: Illegal number: ", 24);
+	/*write(STDERR_FILENO, message, _strlen(message));*/
 	write(STDERR_FILENO, command, _strlen(command));
 	write(STDERR_FILENO, "\n", 1);
 	free(idx), idx = NULL;
