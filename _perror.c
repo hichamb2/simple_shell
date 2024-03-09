@@ -26,7 +26,7 @@ void path_perror(char *name, char *command, int index)
  */
 void exit_perror(char *name, char *command, int index)
 {
-	char *idx, message[] = ": exit: Illegal number:";
+	char *idx, message[] = ": exit: Illegal number: ";
 
 	idx = _itostr(index);
 	write(STDERR_FILENO, name, _strlen(name));

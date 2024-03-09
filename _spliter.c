@@ -60,7 +60,7 @@ char *_getline(void)
 	int ret = 0;
 
 	if (isatty(0) == 1)
-		_printf("#cisfun$");
+		_printf("#cisfun$ ");
 	ret = getline(&line, &size_line, stdin);
 	if (ret == -1)
 	{
