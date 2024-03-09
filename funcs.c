@@ -32,7 +32,7 @@ int _execve(char *cmd[], char **argv, int index)
 	full_command = get_path(cmd[0]);
 	if (!full_command)
 	{
-		fprintf(stderr, "%s: %d: %s: not found\n", argv[0], index, cmd[0]);
+		path_perror(argv[0], cmd[0], index);
 		free_array(cmd);
 		return (127);
 	}

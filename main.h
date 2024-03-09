@@ -16,7 +16,9 @@ int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);
-
+int _atoi(char *s);
+char *_itostr(int c);
+void _rev_str(char *s);
 /**
  * struct op - Struct op
  *
@@ -41,4 +43,13 @@ int _execve(char *cmd[], char **argv, int index);
 char *_strdup(char *str);
 char *get_env(char *str);
 char *get_path(char *command);
+void path_perror(char *name, char *command, int index);
+void exit_perror(char *name, char *command, int index);
+/**********task exit and env***************/
+
+int is_built_in(char *command);
+void _builtin(char **command, char **argv, int *stat, int index);
+void exit_sh(char **command, char **argv, int *stat, int index);
+void print_env(char **command, int *stat);
+int _positive(char *str);
 #endif

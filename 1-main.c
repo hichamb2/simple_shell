@@ -20,15 +20,18 @@ int main(int argc, char *argv[])
 		line = _getline();
 		if (line == NULL)
 		{
-			if (isatty(0) == 1)
-				perror(argv[0]);
+			if (isatty(STDIN_FILENO))
+				write(STDIN_FILENO, "\n", 1);
 			return (stat);
 		}
 		index++;
 		command = _spliter(line);
 		if (!command)
 			continue;
-		stat = _execve(command, argv, index);
+		if (is_built_in(command[0]))
+			_builtin(command, argv, &stat, index);
+		else
+			stat = _execve(command, argv, index);
 	}
 	return (stat);
 }
