@@ -59,7 +59,7 @@ int _positive(char *str)
 {
 	int i;
 
-	if (!str)
+	if (!str || *str == '\0')
 		return (0);
 	for (i = 0; str[i] != '\0'; i++)
 	{

@@ -40,13 +40,13 @@ void _builtin(char **command, char **argv, int *stat, int index)
  */
 void exit_sh(char **command, char **argv, int *stat, int index)
 {
-	int exit_val = *stat;
+	int exit_status = *stat;
 
 	if (command[1])
 	{
 		if (_positive(command[1]))
 		{
-			exit_val = _atoi(command[1]);
+			exit_status = _atoi(command[1]);
 		}
 		else
 		{

@@ -33,7 +33,7 @@ void exit_perror(char *name, char *command, int index)
 		return;
 	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, idx, _strlen(idx));
+	write(STDERR_FILENO, idx, strlen(idx));
 	write(STDERR_FILENO, message, _strlen(message));
 	write(STDERR_FILENO, command, _strlen(command));
 	write(STDERR_FILENO, "\n", 1);
