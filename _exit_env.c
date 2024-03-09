@@ -57,7 +57,7 @@ void exit_sh(char **command, char **argv, int *stat, int index)
 		}
 	}
 	free_array(command);
-	exit(exit_val);
+	exit(exit_status);
 }
 /**
  * print_env - Print the environment variables.
