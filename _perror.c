@@ -7,9 +7,9 @@
  */
 void path_perror(char *name, char *command, int index)
 {
-	char *idx = NULL, message[] = ": not found\n";
+	char *idx = _itostr(index);
+	char message[] = ": not found\n";
 
-	idx = _itostr(index);
 	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, idx, _strlen(idx));
@@ -26,9 +26,9 @@ void path_perror(char *name, char *command, int index)
  */
 void exit_perror(char *name, char *command, int index)
 {
-	char *idx = NULL, message[] = ": exit: Illegal number: ";
+	char message[] = ": exit: Illegal number: ";
+	char *idx = _itostr(index);
 
-	idx = _itostr(index);
 	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, idx, _strlen(idx));
