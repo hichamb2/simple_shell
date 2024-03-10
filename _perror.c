@@ -24,7 +24,7 @@ void path_perror(char *name, char *command, int index)
  * @command: The exit command.
  * @index: The index of the command in the input.
  */
-void exit_perror(char *name, char *command, int index)
+/*void exit_perror(char *name, char *command, int index)
 {
 	char message[] = ": exit: Illegal number: ";
 	char *idx = _itostr(index);
@@ -38,4 +38,4 @@ void exit_perror(char *name, char *command, int index)
 	write(STDERR_FILENO, command, _strlen(command));
 	write(STDERR_FILENO, "\n", 1);
 	free(idx), idx = NULL;
-}
+}*/
