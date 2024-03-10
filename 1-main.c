@@ -26,13 +26,12 @@ int main(int argc, char *argv[])
 		}
 		index++;
 		command = _spliter(line);
-		if (!command)
+		if (!command[0])
 			continue;
-		printf("from main index bi str %s\n", itoa(index));
-		if (is_built_in(command[0]) == 1)
+		/*printf("from main index bi str %s\n", itoa(index));*/
+		if (is_built_in(command[0]))
 			_builtin(command, argv, &stat, index);
 		else
 			stat = _execve(command, argv, index);
 	}
-	return (stat);
 }
