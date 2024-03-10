@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		command = _spliter(line);
 		if (!command)
 			continue;
-		if (is_built_in(command[0]))
+		if (is_built_in(command[0]) == 1)
 			_builtin(command, argv, &stat, index);
 		else
 			stat = _execve(command, argv, index);

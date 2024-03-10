@@ -99,18 +99,14 @@ char *_itostr(int c)
  */
 void _rev_str(char *s)
 {
-	int i = 0, j = 0;
-	char ch;
+	int i, j;
+	char temp;
+	int length = _strlen(s);
 
-	while (s[i] != '\0')
-		i++;
-	for (i = i; i != 0; i--)
+	for (i = 0, j = length - 1; i < j; i++, j--)
 	{
-		for (j = 0; j < (i - 1); j++)
-		{
-			ch = s[j + 1];
-			s[j + 1] = s[j];
-			s[j] = ch;
-		}
+		temp = s[i];
+		s[i] = s[j];
+		s[j] = temp;
 	}
 }

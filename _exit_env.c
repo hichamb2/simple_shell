@@ -41,8 +41,7 @@ void _builtin(char **command, char **argv, int *stat, int index)
 void exit_sh(char **command, char **argv, int *stat, int index)
 {
 	int exit_status = *stat;
-	char message[] = ": exit: Illegal number: ";
-	/*char *idx = NULL;*/
+
 	if (command[1])
 	{
 		if (_positive(command[1]))
@@ -51,14 +50,7 @@ void exit_sh(char **command, char **argv, int *stat, int index)
 		}
 		else
 		{
-			/*idx = _itostr(index);*/
-			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
-			write(STDERR_FILENO, ": ", 2);
-			write(STDERR_FILENO, _itostr(index), strlen(_itostr(index)));
-			write(STDERR_FILENO, message, _strlen(message));
-			write(STDERR_FILENO, command[1], _strlen(command[1]));
-			write(STDERR_FILENO, "\n", 1);
-			/*free(idx);*/
+			exit_perror(argv[0], command[1], index);
 			free_array(command);
 			*stat = 2;
 			return;
