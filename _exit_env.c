@@ -38,10 +38,9 @@ void _builtin(char **command, char **argv, int *stat, int index)
  * @stat: Pointer to the status indicator.
  * @index: Index of the command.
  */
-/*void exit_sh(char **command, char **argv, int *stat, int index)
+void exit_sh(char **command, char **argv, int *stat, int index)
 {
 	int exit_status = *stat;
-	char *error_message;
 
 	if (command[1])
 	{
@@ -59,7 +58,7 @@ void _builtin(char **command, char **argv, int *stat, int index)
 	}
 	free_array(command);
 	exit(exit_status);
-}*/
+}
 /**
  * print_env - Print the environment variables.
  * @command: The command passed to print the environment.

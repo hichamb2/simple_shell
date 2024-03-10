@@ -74,7 +74,7 @@ int _positive(char *str)
  *
  * Return: A pointer to the resulting string.
  */
-char *_itostr(int c)
+/*char *_itostr(int c)
 {
 	char str[20];
 	int i = 0;
@@ -90,14 +90,16 @@ char *_itostr(int c)
 		}
 	}
 	str[i] = '\0';
+	printf("from _itostr() before rev %s\n", _strdup(str));
 	_rev_str(str);
+	printf("from _itostr() after ref %s\n", _strdup(str));
 	return (_strdup(str));
-}
+}*/
 /**
  * _rev_str - the function that print number of characters
  * @s: the parametre
  */
-void _rev_str(char *s)
+/*void _rev_str(char *s)
 {
 	int i, j;
 	char temp;
@@ -109,4 +111,4 @@ void _rev_str(char *s)
 		s[i] = s[j];
 		s[j] = temp;
 	}
-}
+}*/

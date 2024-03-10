@@ -10,13 +10,9 @@
 #include <string.h>
 extern char **environ;
 
-/*test*/
-void exit_perror(char *name, int index, char *message, char *command1);
-void exit_sh(char **command, char **argv, int *stat, int index);
-/*****************/
-
 int _printf(const char *format, ...);
 
+char *itoa(int num);
 int _putchar(char c);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
@@ -50,12 +46,12 @@ char *_strdup(char *str);
 char *get_env(char *str);
 char *get_path(char *command);
 void path_perror(char *name, char *command, int index);
-/*void exit_perror(char *name, char *command, int index);*/
+void exit_perror(char *name, char *command, int index);
 /**********task exit and env***************/
 
 int is_built_in(char *command);
 void _builtin(char **command, char **argv, int *stat, int index);
-/*void exit_sh(char **command, char **argv, int *stat, int index);*/
+void exit_sh(char **command, char **argv, int *stat, int index);
 void print_env(char **command, int *stat);
 int _positive(char *str);
 #endif

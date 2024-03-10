@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
 		command = _spliter(line);
 		if (!command)
 			continue;
+		printf("from main index bi str %s\n", itoa(index));
 		if (is_built_in(command[0]) == 1)
 			_builtin(command, argv, &stat, index);
 		else
