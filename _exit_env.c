@@ -50,7 +50,11 @@ void exit_sh(char **command, char **argv, int *stat, int index)
 		}
 		else
 		{
-			exit_perror(argv[0], command[1], index);
+			if (command[1])/*dd*/
+				exit_perror(argv[0], command[1], index);/*dd*/
+			else/*dd*/
+				exit_perror(argv[0], "NULL", index);/*dd*/
+			/*exit_perror(argv[0], command[1], index);*/
 			free_array(command);
 			*stat = 2;
 			return;
